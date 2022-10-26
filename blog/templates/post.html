@@ -1,0 +1,13 @@
+<!-- post.html -->
+{% extends 'base.html' %}
+{% block title %} {{ post.title }} {% endblock %}
+{% block headmessage %}
+    <h2>{{ post.title }}</h2>
+{% endblock %}
+
+{% block content %}
+<p>發表於: {{ post.created_at }}</p>
+    <p>{{ post.body }}</p>
+    <hr>
+    <a href="/">回到部落格</a>
+{% endblock %}
