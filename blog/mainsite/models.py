@@ -6,6 +6,8 @@ from django.utils import timezone
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
+    depiction = models.CharField(max_length=200)
+    cover = models.URLField(max_length=250)
     body = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
     # updated_at = models.DateTimeField(auto_now=True)

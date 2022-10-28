@@ -1,17 +1,27 @@
 <!-- index.html -->
 {% extends 'base.html' %}
+{% load markdown_deux_tags %}
 {% block title %} 部落格 {% endblock %}
 {% block headmessage %} <h2>貼文列表</h2> {% endblock %}
 {% block content %}
 {% for post in posts %}
 <a class="card-post" href="/post/{{ post.slug }}">
     <div class="post">
-        <div class="post-title">
-            <h2>{{ post.title }}</h2>
+        <div class="post-cover">
+            <img src="{{ post.cover }}" alt="">
         </div>
-        <div class="post-created">
-            <p>發表於: {{ post.created_at }}</p>
+        <div class="post-description">
+            <div class="post-title">
+                <h2>{{ post.title }}</h2>
+            </div>
+            <div class="post-created">
+                <p>發表於: {{ post.created_at | date:"Y-m-d(l) H:i:s" }}</p>
+            </div>
+            <div class="post-content">
+                <p>{{ post.depiction | markdown }}</p>
+            </div>
         </div>
+
     </div>
 </a>
 {% endfor %}
