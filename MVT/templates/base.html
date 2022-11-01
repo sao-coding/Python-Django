@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            padding-inline-start: 0;
+        }
+
+        nav ul li {
+            flex-grow: 1;
+            flex-basis: 0;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        nav ul li:hover {
+            background-color: #ccc;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+        }
+
+        hr {
+            border: 3px dashed rgb(255, 125, 93);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        tr {
+            border-bottom: 1px solid #ccc;
+        }
+        td {
+            
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">首頁</a></li>
+            <li><a href="/list">二手機列表</a></li>
+            <li><a href="/about">關於我們</a></li>
+        </ul>
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

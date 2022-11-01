@@ -1,0 +1,23 @@
+<!-- list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h1>二手機列表</h1>
+<table>
+    <thead>
+        <tr>
+            <th>型號</th>
+            <th>價格</th>
+            <th>庫存</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for phone in products %}
+        <tr>
+            <td>{{ phone.name }}</td>
+            <td>{{ phone.price }}</td>
+            <td>{{ phone.qty }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
