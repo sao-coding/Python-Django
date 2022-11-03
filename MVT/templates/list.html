@@ -1,5 +1,8 @@
 <!-- list.html -->
 {% extends 'base.html' %}
+{% block title %}
+二手機列表
+{% endblock %}
 {% block content %}
 <h1>二手機列表</h1>
 <table>
@@ -13,11 +16,12 @@
     <tbody>
         {% for phone in products %}
         <tr>
-            <td>{{ phone.name }}</td>
+            <td><a href="/detail/{{ phone.sku }}">{{ phone.name }}</a></td>
             <td>{{ phone.price }}</td>
             <td>{{ phone.qty }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="/">回首頁</a>
 {% endblock %}

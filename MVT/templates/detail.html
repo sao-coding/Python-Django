@@ -1,0 +1,23 @@
+<!-- list.html -->
+{% extends 'base.html' %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+<h1>{{ product.name }}</h1>
+<table>
+    <tr>
+        <td>型號</td>
+        <td>{{ product.name }}</td>
+    </tr>
+    <tr>
+        <td>價格</td>
+        <td>{{ product.price }}</td>
+    </tr>
+    <tr>
+        <td>庫存</td>
+        <td>{{ product.qty }}</td>
+    </tr>
+</table>
+<a href="/list">回二手機列表</a>
+{% endblock %}

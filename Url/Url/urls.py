@@ -1,4 +1,4 @@
-"""MVT URL Configuration
+"""Url URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mainsite.views import homepage, about, list, detail
+from mainsite.views import index, about
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", homepage),
-    path("about/", about),
-    path("list/", list),
-    path("detail/<str:sku>/", detail),
+    path('admin/', admin.site.urls),
+    path('', index),
+    path('about/', about),
+    path('about/<int:id>', about),
 ]
