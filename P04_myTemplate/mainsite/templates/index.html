@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{msg}}
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}電視新聞直播 {% endblock %}
+{% block tvname %} {{tv.name}} {% endblock %}
+{% block menu %}
+<ul class='nav navbar-nav'>
+    <li class='active'><a href='/'>Home</a></li>
+    <li><a href="{% url 'tv-url' 0 %}">音樂台0</a></li>
+    <li><a href="{% url 'tv-url' 1 %}">網路流行音樂電台</a></li>
+    <li><a href="{% url 'tv-url' 2 %}">中天新聞</a></li>
+    <li><a href="{% url 'tv-url' 3 %}">公視新聞網</a></li>
+    <li><a href="{% url 'tv-url' 4 %}">藍井エイル - 心臓</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<div class='conatiner'>
+<div id='tvcode' align='center'>
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/{{tv.tvcode}}" 
+frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+{% endblock %}
