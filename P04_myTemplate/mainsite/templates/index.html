@@ -3,12 +3,15 @@
 {% block tvname %} {{tv.name}} {% endblock %}
 {% block menu %}
 <ul class='nav navbar-nav'>
-    <li class='active'><a href='/'>Home</a></li>
-    <li><a href="{% url 'tv-url' 0 %}">音樂台0</a></li>
+    <li class='active'><a href='/engtv'>engtv</a></li>
+    {% for tv in tv_list %}
+    <li><a href='{% url "tv-url" forloop.counter0 %}'>{{tv.name}}</a></li>
+    {% endfor %}
+    <!-- <li><a href="{% url 'tv-url' 0 %}">音樂台0</a></li>
     <li><a href="{% url 'tv-url' 1 %}">網路流行音樂電台</a></li>
     <li><a href="{% url 'tv-url' 2 %}">中天新聞</a></li>
     <li><a href="{% url 'tv-url' 3 %}">公視新聞網</a></li>
-    <li><a href="{% url 'tv-url' 4 %}">藍井エイル - 心臓</a></li>
+    <li><a href="{% url 'tv-url' 4 %}">藍井エイル - 心臓</a></li> -->
 </ul>
 {% endblock %}
 {% block content %}

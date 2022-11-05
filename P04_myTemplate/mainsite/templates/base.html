@@ -25,6 +25,13 @@
             <div class='navbar-header'>
                 {% load static %}
                 <img src="{% static 'images/logo.png' %}" width=80>
+                {% if hour > 18 %}
+                晚安
+                {% elif hour < 10 %}
+                早安
+                {% else %}
+                你好
+                {% endif %}
                 {% block tvname %}
                 {% endblock %}
                 <a class='navbar-brand' href='#'>現正播出{{tv.name}}</a>

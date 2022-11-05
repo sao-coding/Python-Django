@@ -13,6 +13,7 @@ def index(request, tvno=0):
         {'name': '藍井エイル - 心臓', 'tvcode': 't1JaVrN5mbk'},
     ]
     now = datetime.now()
+    hour = now.timetuple().tm_hour
     tvno = tvno
     tv = tv_list[tvno]
     return render(request, "index.html", locals())
@@ -23,6 +24,7 @@ def engtv(request, tvno='0'):
             {'name': 'India News', 'tvcode': 'E7dbhET6_EA'},
             {'name': 'CCTV', 'tvcode': 'vCDDYb_M2B4'}, ]
     now = datetime.now()
+    hour = now.timetuple().tm_hour
     tvno = tvno
     tv = tv_list[int(tvno)]
     return render(request, 'engtv.html', locals())
