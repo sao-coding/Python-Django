@@ -1,0 +1,43 @@
+<!-- carlist.html (p06 Template project) -->
+{% extends "base.html" %}
+{% block title %}歡迎光臨NTU模型車賣場{% endblock %}
+{% block tvname %} NTU模型車賣場 {% endblock %}
+{% block menu %}
+<ul class='nav navbar-nav'>
+    <li class='active'><a href='/'>home</a></li>
+    <li class='active'><a href='/engtv'>engtv</a></li>
+    {% for m in car_maker %}
+    <li><a href="{% url 'carlist-url' forloop.counter0 %}">{{ m.car_maker }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+{% block content %}
+<div class='conatiner'>
+<div id='tvcode' align='center'>
+    <h2>歡迎光臨NTU模型車賣場</h2>
+    {% if cars %}
+    <table style="border: 1px solid black;width: 50%;">
+        <tr  style="border: 1px solid black;">
+            <td style="text-align: center;border: 1px solid black;">車廠</td>
+            <td style="text-align: center;border: 1px solid black;">車款</td>
+            <td style="text-align: center;border: 1px solid black;">價格</td>
+            <td style="text-align: center;border: 1px solid black;">庫存</td>
+        </tr>
+        {% endif %}
+        {% for c in car_list|dictsort:"car_qty" %}
+        <tr bgcolor="{% cycle '#eeeeee' '#cccccc' '#999999' %}" style="border: 1px solid black;">
+            <td style="text-align: center;border: 1px solid black;">{{ maker_name.car_maker }}</td>
+            <td style="text-align: center;border: 1px solid black;">{{ c.car_model }}</td>
+            {% load humanize %}
+            <td style="text-align: center;border: 1px solid black;">{{ c.car_price | floatformat:2 | intcomma }}</td>
+            <td style="text-align: center;border: 1px solid black;">{{ c.car_qty | intcomma }}</td>
+        </tr>
+        {% empty %}
+        <h3>車廠<em>{{maker_name.car_maker}}</em>目前無庫存車</h3>
+        {% endfor %}
+        {% if cars %}
+    </table>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

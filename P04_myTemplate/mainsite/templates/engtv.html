@@ -6,7 +6,7 @@
 <ul class='nav navbar-nav'>
     <li class='active'><a href='/'>Home</a></li>
     {% for tv in tv_list %}
-    <li><a href='{% url "engtv-url" forloop.counter0 %}'>{{tv.name}}</a></li>
+    <li><a href='{% url "engtv-url" forloop.counter0 %}'>{{tv.tvname}}</a></li>
     {% endfor %}
     <!-- <li><a href='{% url "engtv-url" 0 %}'>Sky News</a></li>
     <li><a href='{% url "engtv-url" 1 %}'>Euro News</a></li>

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}電視新聞直播 {% endblock %}
+{% block title %}電視新聞直播{% endblock %}
 {% block tvname %} {{tv.name}} {% endblock %}
 {% block menu %}
 <ul class='nav navbar-nav'>
     <li class='active'><a href='/engtv'>engtv</a></li>
     {% for tv in tv_list %}
-    <li><a href='{% url "tv-url" forloop.counter0 %}'>{{tv.name}}</a></li>
+    <li><a href='{% url "tv-url" forloop.counter0 %}'>{{tv.tvname}}</a></li>
     {% endfor %}
     <!-- <li><a href="{% url 'tv-url' 0 %}">音樂台0</a></li>
     <li><a href="{% url 'tv-url' 1 %}">網路流行音樂電台</a></li>
