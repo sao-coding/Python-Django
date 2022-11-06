@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Maker, PModel, Product, PPhoto
+from mysite import models
 
 # Register your models here.
 
@@ -11,11 +11,13 @@ class PModelAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('nickname', 'pmodel', 'year', 'price')
+    search_fields = ('nickname', 'pmodel__name', 'description', 'year', 'price')
+    ordering = ('-year', 'price')
 
 class PPhotoAdmin(admin.ModelAdmin):
-    list_display = ('description', 'product')
+    list_display = ( 'product','description')
 
-admin.site.register(Maker, MakerAdmin)
-admin.site.register(PModel, PModelAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(PPhoto, PPhotoAdmin)
+admin.site.register(models.Maker, MakerAdmin)
+admin.site.register(models.PModel, PModelAdmin)
+admin.site.register(models.Product, ProductAdmin)
+admin.site.register(models.PPhoto, PPhotoAdmin)
