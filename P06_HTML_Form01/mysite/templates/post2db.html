@@ -1,0 +1,20 @@
+<!-- post2db.html (HTML_Form02) -->
+{% extends "base.html" %}
+{% block title %}我有話要說{% endblock %}
+{% block content %}
+<div class='container'>
+    {% if message %}
+    <div class='alert alert warning'>{{ message }}</div>
+    {% endif %}
+
+    <form name='my form' action='.' method='POST'>
+        {% csrf_token %}
+        <table>
+            {{ post_form.as_table }}<!--  # 顯示表單的 HTML 碼 用<table></table> -->
+        </table>
+        <input type='submit' value='張貼'>
+        <input type='reset' value='清除重填'>
+    </form>
+    <!-- {{ post_form.as_p }} # 顯示表單的 HTML 碼 用<p></p> -->
+</div>
+{% endblock %}
