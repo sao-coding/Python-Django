@@ -70,16 +70,23 @@ def posting(request):
         user_pass = request.POST['user_pass']
         user_post = request.POST['user_post']
         user_mood = request.POST['mood']
+        user_verify = request.POST['verify_code']
+        print(user_verify)
     except:
         user_id = None
         message = '如要張貼訊息，則每一個欄位都要填...'
 
-    if user_id != None:
+    if user_id != None and user_verify == '1234':
         mood = models.Mood.objects.get(status=user_mood)
-        post = models.Post.objects.create(
-            mood=mood, nickname=user_id, del_pass=user_pass, message=user_post)
+        post = models.Post.objects.create(mood=mood, nickname=user_id, del_pass=user_pass, message=user_post, enabled=True)
         post.save()
+        return HttpResponseRedirect('/list')
         message = '成功儲存！請記得你的編輯密碼[{}]!，訊息需經審查後才會顯示。'.format(user_pass)
+    elif user_id != None:
+        message = '驗證碼錯誤！，需經審查後才會顯示。'
+        mood = models.Mood.objects.get(status=user_mood)
+        post = models.Post.objects.create(mood=mood, nickname=user_id, del_pass=user_pass, message=user_post, enabled=False)
+        post.save()
     return render(request, 'posting.html', locals())
 
 
